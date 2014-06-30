@@ -4,8 +4,9 @@ var mixApp = angular.module('starter.services', [])
 
 mixApp.factory('mixesFactory', function($http) {
   return {
-    getMixesAsync: function(callback) {
-      $http.get('http://api.mixcloud.com/search/?q=igreja&type=cloudcast').success(callback);
+    getMixesAsync: function(url, callback) {
+      var url = url === null ? 'http://api.mixcloud.com/search/?q=igreja&type=cloudcast' : url;
+      $http.get(url).success(callback);
     },
     getMixAsync: function(user, slug, callback) {
       var key = user + "/" + slug;

@@ -1,13 +1,33 @@
 angular.module('starter.controllers', [])
 
 .controller('RecentesCtrl', function($scope, mixesFactory) {
-  mixesFactory.getMixesAsync(function(results) {
-    $scope.mixes = results.data;
+  $scope.mixes = [];
+  $scope.paging = null;
+  $scope.moreData = true;
+
+  $scope.loadMore = function(){
+    mixesFactory.getMixesAsync($scope.paging, function(results) {
+      angular.forEach(results.data, function(value, key) {
+        $scope.mixes.push(value);
+      });
+      $scope.paging = results.paging.next;
+      $scope.moreData = results.paging.next === undefined ? false : true;
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
+
+  $scope.moreDataCanBeLoaded = function(){
+    return $scope.moreData;
+  };
+
+  $scope.$on('stateChangeSuccess', function() {
+    $scope.loadMore();
   });
 
   $scope.doRefresh = function(){
-    mixesFactory.getMixesAsync(function(results) {
+    mixesFactory.getMixesAsync(null, function(results) {
       $scope.mixes = results.data;
+      $scope.urlmore = results;
       $scope.$broadcast('scroll.refreshComplete');
     });
   };
