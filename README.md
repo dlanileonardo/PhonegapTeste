@@ -1,5 +1,5 @@
-# Phonegap, Angular e Ionic
-===========================
+Phonegap, Angular e Ionic
+=========================
 
 Começando
 ---------
