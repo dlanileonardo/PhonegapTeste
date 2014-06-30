@@ -1,0 +1,12 @@
+<ion-view title="Mais Recentes">
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item class="item-thumbnail-left" ng-repeat="mix in mixes" type="item-text-wrap"
+      href="#/tab/recent/{{mix.user.username}}/{{mix.slug}}">
+        <img src="{{mix.pictures.medium_mobile}}" alt="{{mix.name}}">
+        <h2>{{mix.name}}</h2>
+        <p>{{mix.created_time}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

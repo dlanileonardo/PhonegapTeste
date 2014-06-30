@@ -7,10 +7,6 @@ var app = {
     },
 
     onDeviceReady: function() {
-      navigator.notification.vibrate(1000);
-
-      angular.element(document).ready(function() {
-        angular.bootstrap(document);
-      });
+      navigator.notification.vibrate(250);
     },
 };
