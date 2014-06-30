@@ -10,11 +10,10 @@
   "dependencies": {
     "angular": "1.2.x",
     "angular-mocks": "~1.2.x",
-    "jquery": "1.10.2",
     "angular-route": "~1.2.x",
     "angular-resource": "~1.2.x",
     "angular-animate": "~1.2.x",
-    "ionic": "~1.0.x"
+    "ionic": "~1.x.x"
   },
   "authors": [
     "Dlani Mendes <dlanileonardo@gmail.com>"
