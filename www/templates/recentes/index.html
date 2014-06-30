@@ -1,11 +1,15 @@
 <ion-view title="Mais Recentes">
   <ion-content class="has-header">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list>
       <ion-item class="item-thumbnail-left" ng-repeat="mix in mixes" type="item-text-wrap"
       href="#/tab/recent/{{mix.user.username}}/{{mix.slug}}">
-        <img src="{{mix.pictures.medium_mobile}}" alt="{{mix.name}}">
+        <img src="{{mix.pictures.medium}}" alt="{{mix.name}}">
         <h2>{{mix.name}}</h2>
-        <p>{{mix.created_time}}</p>
+        <p>{{mix.created_time|date:'mediumDate'}}</p>
       </ion-item>
     </ion-list>
   </ion-content>

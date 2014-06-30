@@ -4,6 +4,13 @@ angular.module('starter.controllers', [])
   mixesFactory.getMixesAsync(function(results) {
     $scope.mixes = results.data;
   });
+
+  $scope.doRefresh = function(){
+    mixesFactory.getMixesAsync(function(results) {
+      $scope.mixes = results.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
 })
 .controller('RecentesVisualizarCtrl', function($scope, $sce, $stateParams, mixesFactory) {
   mixesFactory.getMixAsync($stateParams.user, $stateParams.slug, function(results) {
@@ -18,11 +25,25 @@ angular.module('starter.controllers', [])
   mixesFactory.getAllAuthorMixesAsync(function(results) {
     $scope.mixes = results.data;
   });
+
+  $scope.doRefresh = function(){
+    mixesFactory.getAllAuthorMixesAsync(function(results) {
+      $scope.mixes = results.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
 })
 .controller('AutorCloudcastsCtl', function($scope, $sce, $stateParams, mixesFactory) {
   mixesFactory.getAuthorMixesAsync($stateParams.user, function(results) {
     $scope.mixes = results.data;
   });
+
+  $scope.doRefresh = function(){
+    mixesFactory.getAuthorMixesAsync($stateParams.user, function(results) {
+      $scope.mixes = results.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
 })
 .controller('AutorVisualizarCtl', function($scope, $sce, $stateParams, mixesFactory) {
   mixesFactory.getMixAsync($stateParams.user, $stateParams.slug, function(results) {
@@ -32,6 +53,3 @@ angular.module('starter.controllers', [])
     };
   });
 });
-
-// .controller('AccountCtrl', function($scope) {
-// });

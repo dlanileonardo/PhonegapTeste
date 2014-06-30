@@ -1,12 +1,24 @@
-<ion-view title="CloudCasts">
+<ion-view title="Por Autor">
   <ion-content class="has-header">
-    <ion-list>
+    <ion-refresher ng-hide="!mixes.length"
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list ng-hide="!mixes.length">
       <ion-item class="item-thumbnail-left" ng-repeat="mix in mixes" type="item-text-wrap"
       href="#/tab/author/visualizar/{{mix.user.username}}/{{mix.slug}}">
-        <img src="{{mix.pictures.medium_mobile}}" alt="{{mix.name}}">
+        <img src="{{mix.pictures.medium}}" alt="{{mix.name}}">
         <h2>{{mix.name}}</h2>
-        <p>{{mix.created_time}}</p>
+        <p>{{mix.created_time|date:'mediumDate'}}</p>
       </ion-item>
     </ion-list>
+    <div class="card" ng-show="!mixes.length">
+      <div class="item item-divider bar-energized">
+        Aviso!
+      </div>
+      <div class="item item-text-wrap">
+        Nada encontrado!
+      </div>
+    </div>
   </ion-content>
 </ion-view>

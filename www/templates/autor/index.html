@@ -1,8 +1,12 @@
 <ion-view title="Por Autor">
   <ion-content class="has-header">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list>
       <ion-item class="item-avatar" ng-repeat="mix in mixes" type="item-text-wrap" href="#/tab/author/{{mix.username}}">
-        <img src="{{mix.pictures.medium_mobile}}" alt="">
+        <img src="{{mix.pictures.medium}}" alt="">
         <h2>{{mix.name}}</h2>
         <p>{{mix.username}}</p>
       </ion-item>
